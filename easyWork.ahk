@@ -251,6 +251,8 @@ SetCapsLockState, AlwaysOff
     else
         send, {Left}
     Return
+    !j::send,!{left}
+    Return
     ; move right
     CapsLock & l::
     if GetKeyState("LShift", "P")
@@ -262,12 +264,13 @@ SetCapsLockState, AlwaysOff
     else
         send, {right}
     Return
+    !l::send,!{right}
     ; move up
     CapsLock & i::
     if GetKeyState("LShift", "P")
         send, +{up}
     else if GetKeyState("LAlt", "P")
-        send,^!{up}
+        send,^{up}
     else if GetKeyState("LControl", "P")
         send,^+{up}
     else
@@ -278,7 +281,7 @@ SetCapsLockState, AlwaysOff
     if GetKeyState("LShift", "P")
         send, +{down}
     else if GetKeyState("LAlt", "P")
-        send,^!{down}
+        send,^{down}
     else if GetKeyState("LControl", "P")
         send,^+{down}
     else
@@ -315,8 +318,8 @@ SetCapsLockState, AlwaysOff
     ;AppsKey
     CapsLock & g:: Send, {AppsKey}
     ;delelte
-    CapsLock & o::send,{delete} 
-    CapsLock & p::send,{BackSpace}
+    CapsLock & x::send,{delete} 
+    CapsLock & c::send,{BackSpace}
     ;= + ()
     CapsLock & `;::send,{=}
     CapsLock & '::send,{+}
@@ -345,9 +348,9 @@ SetCapsLockState, AlwaysOff
             MsgBox, You selected folder "%OutputVar%".
     Return
 
-    CapsLock & c::
-        run calc.exe
-    Return
+    ;CapsLock & c::
+      ;  run calc.exe
+   ; Return
 ; 获取路径
     ^#c::
         send ^c
